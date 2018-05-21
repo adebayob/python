@@ -1,0 +1,33 @@
+#Display first_five using the print() function.
+
+f = open('dq_unisex_names.csv', 'r')
+names = f.read()
+names_list = names.split('\n')
+first_five = names_list[0:5]
+print(first_five)
+
+#Split each element in names_list on the comma delimiter (,) and append the resulting list to nested_list.
+
+nested_list = []
+for row in names_list:
+    comma_list = row.split(',')
+    nested_list.append(comma_list)
+print(nested_list)
+
+#Create a new list of lists called numerical_list where:The element at index 0 for each list is the unisex name (as a string), The element at index 1 for each list is the number of people who share that name (as a float).
+
+numerical_list = []
+for row in nested_list:
+        nested_name = row[0]
+        nested_data = float(row[1])
+        nested_nd = [nested_name, nested_data]
+        numerical_list.append(nested_nd)
+print(numerical_list[0:5])
+
+#Create a new list of strings called thousand_or_greater that only contains the names shared by 1,000 people or more.
+
+thousand_or_greater = []
+for row in numerical_list:
+    if row[1] >= 1000:
+        thousand_or_greater.append(row[0])
+print(thousand_or_greater[0:10])
